@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Style the body */
+body {
+background-color:#f2e394;
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background:#588c7e;
+  color: white;
+  font-size: 15px;
+}
+
+.para{
+font-size: 15px;
+}
+/* Page Content */
+.content {padding:20px;}
+
+table, td, th { 
+  margin-top:20px; 
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th, td {
+  padding: 15px;
+}
+
+#txtboxid
+{
+    height:25px;
+    font-size:14pt;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#d96459;
+   color: white;
+   text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Employee DataBase</h1>
+  <p class="para">Job Create</p>
+</div>
+
+<table align="center">
+<form action="jobcreate_insert.php" method="post">
+<tr><td><b>Job Name</b></td><td><input type="text" name="jname" id="txtboxid"></td></tr>
+<tr><td><b>Job Description</b></td><td><textarea rows = "5" cols = "50" name = "desc"></textarea></td></tr>
+<tr><td><b>DeadLine</b></td><td><input type="date" name="date" id="txtboxid">
+ </td></tr>
+<tr><td><b>Department</b></td><td><select name="dep" id="txtboxid">
+  <option value="Invesment">Invesment</option>
+  <option value="Health">Health</option>
+  <option value="Car Insurance">Car Insurance</option>
+  <option value="Travel">Travel</option>
+  </select>
+  </td></tr>
+ <tr><td> <input type="submit" id="txtboxid"></td></tr>
+</form> 
+<div class="footer">
+  <p>Md Comapny Inc</p>
+</div>
+
+</body>
+</html>

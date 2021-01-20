@@ -1,0 +1,134 @@
+<?php
+session_start();
+$eid=$_SESSION["empid"];
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Style the body */
+body {
+background-color:#f2e394;
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background:#588c7e;
+  color: white;
+  font-size: 15px;
+}
+
+.para{
+font-size: 15px;
+}
+/* Page Content */
+.content {padding:20px;}
+
+table, td, th { 
+  margin-top:20px; 
+  border: 0px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th, td {
+  padding: 15px;
+}
+
+#txtboxid
+{
+    height:25px;
+    font-size:14pt;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#d96459;
+   color: white;
+   text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Employee Window</h1>
+  <p class="para">Weclome<?php echo $eid;?></p>
+</div>
+<?php
+   $dbhost = 'localhost';
+   $dbuser = 'root';
+   $dbpass = '1234';
+   
+   $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+   
+   if(! $conn ) {
+      die('Could not connect: ' . mysql_error());
+   }
+   
+   $sql = 'SELECT emp_id, emp_name, emp_salary FROM employee';
+   mysql_select_db('Form');
+   $retval = mysql_query( $sql, $conn );
+   
+   if(! $retval ) {
+      die('Could not get data: ' . mysql_error());
+   }
+   
+   while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+      $empname={$row['emp_name']}  ;
+       $jobname = {$row['job_name']};
+         $jobdesc={$row['job_description']};
+         $deadline={$row['deadline']};
+		 $status={$row['status']};
+		 $comment={$row['comment']};
+		 
+   }
+   
+   echo "Fetched data successfully\n";
+   
+   mysql_close($conn);
+?>
+<table align="left" action="employeeInterface.html" method="post">
+<form>
+<tr><td><b>Job Name</b></td><td>GGGGGGGG</td></tr>
+<tr><td><b>Job Description</b></td><td>AAAAAAAAAAAAAA</td></tr>
+<tr><td><b>DeadLine</b></td><td>GGGGGGGAGAGAGAGAA
+ </td></tr>
+ <tr><td><b>Status</b></td> <td><select name="status" id="txtboxid">
+  <option value="InProcess">In Process</option>
+  <option value="onHold">On Hold</option>
+  <option value="Complteted">Completed</option>
+  </select></td></tr>
+  <tr><td><b>Comment</b></td><td><textarea rows = "5" cols = "50" name = "desc"></textarea></td></tr>
+  <tr><td><input type="submit" value="Update" id="txtboxid"></td></tr>
+</form> 
+<table align="right">
+<form>
+<tr><td><b>Job Name</b></td><td>GGGGGGGG</td></tr>
+<tr><td><b>Job Description</b></td><td>AAAAAAAAAAAAAA</td></tr>
+<tr><td><b>DeadLine</b></td><td>GGGGGGGAGAGAGAGAA
+ </td></tr>
+ <tr><td><b>Status</b></td> <td><select name="status" id="txtboxid">
+  <option value="InProcess">In Process</option>
+  <option value="onHold">On Hold</option>
+  <option value="Complteted">Completed</option>
+  </select></td></tr>
+  <tr><td><b>Comment</b></td><td><textarea rows = "5" cols = "50" name = "desc"></textarea></td></tr>
+  <tr><td><input type="submit" value="Update" id="txtboxid"></td></tr>
+</form> 
+<div class="footer">
+  <p>Md Comapny Inc</p>
+</div>
+
+</body>
+</html>
